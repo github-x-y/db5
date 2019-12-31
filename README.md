@@ -1,2 +1,5 @@
 # db5
-shell  repository
+shell  repositor
+#!/bin/bash
+useradd "$1"
+echo "$2" | passwd --stdin "$1"
