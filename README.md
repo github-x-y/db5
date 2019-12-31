@@ -1,11 +1,17 @@
 # db5
 shell  repositor
 #!/bin/bash
-read -p "请输入您的用户名：" user
-useradd "$user" > /dev/null
-echo "用户创建成功"
+read -p "please enter your user name：" user
+if [ -z $user ];then
+echo "please enter your user name" 
+exit 2
+else
+useradd $user > /dev/null
+echo "User created successfully"
+fi
 stty -echo
-read -p "请输入您的用户名密码：" pass
+read -p "Please enter your username and password:" pass
 stty echo
+pass=${pass:-123456}
 echo "$pass" | passwd --stdin "$user" > /dev/null
-echo "用户密码创建成功"
+echo "Username and password were created successfully"
